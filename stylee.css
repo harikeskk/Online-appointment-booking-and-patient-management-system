@@ -1,0 +1,783 @@
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    
+    }
+    /* Body Styling */
+    body {
+        background: #f4f7f6;
+        color: #333;
+        background: url('../appoinment/img/banner.jpg') no-repeat center center/cover;
+        height: 100vh;
+    }
+    .table{
+        animation: transitionIn-Y-bottom 0.5s;
+    }
+    /* Header Styling */
+    .header-area {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px #b8b8b8, -5px -5px 10px #ffffff;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        z-index: 100;
+    }
+    
+    header.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        animation: slideDown 0.3s ease-in-out;
+    }
+    
+    /* Logo */
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+    }
+    
+    /* Desktop Menu */
+    .nav-menu {
+        list-style: none;
+        display: flex;
+    }
+    
+    .nav-menu li {
+        margin: 0 15px;
+        position: relative;
+    }
+    
+    .nav-menu a {
+        text-decoration: none;
+        color: rgb(11, 10, 10);
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    
+    .nav-menu a:hover {
+        color: rgba(181, 181, 45, 0.881);
+    }
+    
+    /* Hover Animation (Underline Effect) */
+    .nav-menu li::after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 0;
+        background: yellow;
+        transition: width 0.3s;
+        position: absolute;
+        left: 50%;
+        bottom: -5px;
+        transform: translateX(-50%);
+    }
+    
+    .nav-menu li:hover::after {
+        width: 100%;
+    }
+    
+    /* Mobile Menu Button */
+    .menu-icon {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+        .menu-icon {
+            display: block;
+        }
+    
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            background: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s ease-in-out;
+        }
+    
+        .nav-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    
+        .nav-menu li {
+            margin: 15px 0;
+        }
+    }
+    
+    /* Header sticky effect animation */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Preloader */
+    .preloader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .spinner {
+        /* border: 5px solid #ccc;
+        border-top: 5px solid #007bff; */
+        /* background-image: url(img/banner-bg.jpg); */
+         /* border-radius: 50%;
+        width: 50px;
+        height: 50px;  */
+        animation: spin 1s linear infinite;
+    }
+    /* Banner Area */
+    .banner-area {
+        position: relative;
+        width: 50%;
+        height: 100vh;
+        background: url('hospital-banner.jpg') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        color: rgb(24, 20, 20);
+        padding: 20px;
+        overflow: hidden;
+        
+    }
+    
+    /* Banner Content */
+    .banner-content {
+        max-width: 600px;
+        animation: fadeInUp 1.5s ease-in-out;
+    }
+    
+    .banner-content h1 {
+        font-size: 40px;
+        font-weight: bold;
+        animation: slideInLeft 1s ease-in-out;
+    }
+    
+    .banner-content p {
+        font-size: 18px;
+        margin-top: 10px;
+        line-height: 1.6;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    /* Button */
+    .banner-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 25px;
+        background: yellow;
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    
+    .banner-btn:hover {
+        background: orange;
+    }
+    
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .banner-content {
+            text-align: center;
+        }
+    
+        .banner-content h1 {
+            font-size: 28px;
+        }
+    
+        .banner-content p {
+            font-size: 16px;
+        }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+        .menu-icon {
+            display: block;
+        }
+    
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 200px;
+            background: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s ease-in-out;
+        }
+    
+        .nav-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0);
+        }
+    
+        .nav-menu li {
+            margin: 15px 0;
+        }
+    }
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        min-height: 100vh;
+        background-color: #f7f7f7;
+    }
+    
+    /* Styling for the container */
+    .About-details {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        /*background-color: white;*/
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Styling for the image */
+    .About-details .img {
+        flex: 1;
+        overflow: hidden;
+    }
+    
+    .About-details .img img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    /* Styling for the text content */
+    .About-details .text-content {
+        flex: 1;
+        padding: 40px;
+        color: #333;
+    }
+    
+    .About-details .text-content h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: left;
+        animation: fadeIn 1s ease-out;
+    }
+    
+    /* Paragraph styling */
+    .About-details .text-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: left;
+        color: #555;
+        font-weight: 400;
+        animation: fadeIn 1.5s ease-out;
+    }
+    
+    /* Button styling */
+    .About-details .text-content button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .About-details .text-content button:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Animation for the fade-in effect */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* On hover, slightly scale up the image */
+    .About-details .img img:hover {
+        transform: scale(1.05);
+    }
+    
+    
+    #card{
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        gap: 20px;
+    }
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        gap: 30px;
+      }
+      .hos{
+        font-size: 40px;
+        font-weight: bold;
+    }
+      .card {
+        background-color: #fff;
+        padding: 20px;
+        width: 75%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
+      
+      .card:hover {
+        transform: scale(1.05);
+      }
+      
+      .card-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .card h2 {
+        font-size: 24px; /* Adjust font size of the title */
+        margin-bottom: 10px; /* Space below the title */
+      }
+      .card p {
+        font-size: 16px; /* Adjust font size of paragraph */
+        line-height: 1.5; /* Adjust line spacing */
+        margin-bottom: 15px; /* Space below the paragraph */
+      }
+      
+      .text h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      
+      .text p {
+        font-size: 16px;
+        color: #777;
+      }
+      
+      @media (max-width: 768px) {
+        .card-container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .card {
+          width: 80%;
+          margin-bottom: 20px;
+        }
+      }
+    
+      /* Parallax Effect */
+    .parallax {
+        position: relative;
+        background-image: url('../appoinment/img/docteam.png'); /* Set the background image */
+        height: 200px; /* Adjust the height as needed */
+        background-attachment: fixed; /* This creates the parallax effect */
+        background-size: cover;
+        background-position: center;
+    }
+    
+    /* Apply initial state (invisible) for About-details */
+    .About-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease, transform 1s ease;
+        padding: 50px 0; /* Add padding as needed */
+    }
+    
+    /* When the section becomes visible, apply animation */
+    .About-details.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Style the image */
+    .About-details .img img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    /* Styling for text-content */
+    .About-details .text-content {
+        max-width: 50%;
+    }
+    
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+    
+    /* Optional: Adjust for responsiveness */
+    @media (max-width: 768px) {
+        .About-details {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .About-details .text-content {
+            max-width: 100%;
+        }
+    }
+    
+    
+      
+      .parallay {
+        /* The image used */
+        background-image: url("../appoinment/img/0.avif");
+      
+        /* Set a specific height */
+        min-height: 200px; 
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+        
+      .parallaZ {
+        /* The image used */
+        background-image: url("../appoinment/img/iStock-1284252830.jpg");
+      
+        /* Set a specific height */
+        min-height: 200px; 
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+        /* Footer styling */
+        footer {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+           /* position: fixed;*/
+            bottom: 0;
+            left: 0;
+          }
+      
+          /* Social icon container */
+          .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+          }
+      
+          /* Individual social icon styling */
+          .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+          }
+      
+          .social-icons a:hover {
+            color: #00acee; /* Example hover color (Twitter blue) */
+            transform: scale(1.2); /* Icon grows on hover */
+          }
+      
+          /* Footer text styling */
+          footer p {
+            margin-top: 10px;
+            font-size: 14px;
+          }
+
+          .improved h1{
+           
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            color: #172636;
+            
+            margin-bottom: 10px;
+          }
+
+          .improved p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:80px;
+            font-size: 20px;
+            color: #555;
+          }
+
+          .improved img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            margin-left: 100px;
+            gap:30px;
+          }
+
+        
+
+          .badge {
+            display: inline-block;
+            background: #e1ecf4;
+            color: #004085;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+          
+        }
+
+        .badge{
+            margin-left: 450px;
+        }
+
+        .imp-sec h1 p img h3{
+            position: absolute;
+            gap: 70px;
+        }
+
+        .footer {
+            
+            color: white;
+            padding: 30px 0;
+            position: relative; /* Change to 'fixed' if you want it always visible */
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1000px;
+            margin: auto;
+            text-align: left;
+        }
+        
+        .contact-info, .contact-form, .social-media {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .contact-form button:hover {
+            background-color: #219150;
+        }
+        
+        section {
+            position: relative;
+          }
+          
+          .container {
+            width: 100%;
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .stats {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1000px;
+            height: 30%; /* Set the card height to 30% */
+            align-items: center;
+            flex-wrap: wrap;
+          }
+          
+          .stat {
+            text-align: center;
+            width: 30%;
+            position: relative;
+          }
+          
+          .counter {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-right: 1.5rem;
+          }
+          
+          .counter::after {
+            content: "+";
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #007BFF; /* Adjust the color as you prefer */
+            opacity: 0.6;
+          }
+          #coun{
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-right: 1.5rem;
+          }
+          #coun::after{
+            content: "M+";
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #007BFF; /* Adjust the color as you prefer */
+            opacity: 0.6;
+          }
+          p {
+            font-size: 1.1rem;
+            color: #555;
+          }
+          
+          /* Smooth scaling of the counter */
+          @keyframes counterAnim {
+            0% {
+              transform: scale(0.8);
+            }
+            50% {
+              transform: scale(1.1);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          
+          .counter.animate {
+            animation: counterAnim 2s ease-in-out forwards;
+          }
+          
+

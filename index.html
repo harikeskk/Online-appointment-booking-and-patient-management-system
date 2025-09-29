@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="stylee.css">
+   <style>
+    .image-container {
+      position: relative;
+      width: 225px; /* Matches image dimensions */
+    }
+
+    .chatbot-img {
+      width: 100%;
+      display: block;
+    }
+
+    .speech-bubble {
+      position: absolute;
+      top: 10px;
+      right: -10px;
+      background: #00e5ff;
+      color: #000;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid black;
+      animation: typing 2s steps(10, end), blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .ai-float {
+       
+  animation: bounce 2s infinite;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.chat-window {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  background: #0c0c1d;
+  color: white;
+  border: 2px solid #0077ff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #00b7ff;
+}
+
+.log {
+  background: #121232;
+  border: 1px solid #0077ff;
+  height: 250px;
+  overflow-y: scroll;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.log .user {
+  color: #1ecfff;
+}
+.log .bot {
+  color: #a2ff8a;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-one {
+  padding: 6px 12px;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+   </style>
+</head>
+<body>
+     <!-- Preloader -->
+     <div class="preloader">
+        <div class="spinner"><img src="img/logo.png"height="80px"width="90px"></div>
+    </div>
+
+      <!-- Header Area -->
+    <div class="table">
+        <header class="header-area">
+            <a href="#" class="logo"><img src="img/logo.png"height="40px"width="40px"></a>
+            <div class="menu-icon">&#9776;</div>
+            <ul class="nav-menu">
+                <li><a href="login.php">Login</a></li>
+                <li><a href="signup.php">Register</a></li>
+            </ul>
+        </header>
+
+        <!-- Banner Area -->
+        <section class="banner-area">
+            <div class="banner-content">
+                <h1>Leading the way in medical excellence</h1>
+                <p>Providing top-notch healthcare services with modern facilities and expert doctors.</p>
+                <a href="login.php" class="banner-btn">Book an Appointment</a>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="parallax"> </div>
+
+    <section>
+        <div class="About-details">
+            <div class="img">
+                <img src="../appoinment/img/about.png" alt="Image Description">
+            </div>
+            <div class="text-content">
+                <h1>About Us</h1>
+                <p>
+                    Under the Digital India initiative of the Ministry of Electronics and Information Technology <br>(MeitY), Government of India, the National Informatics Centre (NIC) has developed the<br> NextGen eHospital and ORS (Online Registration System) applications.<br>
+                    The NextGen eHospital application is a Hospital Management Information System (HMIS) <br>designed for the internal workflows and processes of hospitals. NextGen eHospital is a <br>one-stop solution that helps connect patients, hospitals, and doctors on a single digital platform.
+                </p>
+                <button>Read Me</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="parallaZ"> </div>
+    <section class="imp-sec">
+        <div class="improved">
+            <h3 class="badge">Improved Patient Experience</h3>
+            <div>
+                <h1> Enhancing Your Hospital's Efficiency Through the</h1>
+                <h1>Patient Journey</h1>
+                <p>Discover how SmartHMS can optimise your hospital's workflow, enhance patient care, and improve overall efficiency.</p>
+            </div>
+            <img src="../appoinment/img/patient-management-system.gif" height="600px" width="1000px">
+        </div>
+    </section>
+    
+    
+    <div class="parallay"> </div>
+
+</div>
+<section id="card">
+     <h1 class="hos">Ehospital </h1>
+<div class="card-container" >
+    <div class="card">
+      <div class="card-content">
+        <div class="icon">
+            <img src="../appoinment/img/1h.png" height="90px" width="90px">
+        </div>
+        <div class="text">
+          <h3>Patient Registration (OPD, Casualty, Appointment & ORS)</h3>
+          <p>The patient registration module of the NextGen eHospital
+             application is used for patient registration in the OPD and Casualty departments, as well as for booking, confirming, and 
+             canceling appointments.</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <div class="icon">
+            <img src="../appoinment/img/2h.png" height="90px" width="90px">
+        </div>
+        <div class="text">
+          <h3>Admission, Discharge & Transfer (IPD)</h3>
+          <p>The IPD module commences when the patient is being
+             registered and allotted bed in the ward.
+              It deals with the complete treatment and services provided to the patient during
+               his stay in the hospital.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-content">
+        <div class="icon">
+        <img src="../appoinment/img/3h.png" height="90px" width="90px">
+        </div>
+        <div class="text">
+          <h3>Billing</h3>
+          <p>The Billing module handles all types of billing workflows.
+             This module assists cashiers and billing operators in managing billing functions, including billing receipts,
+              canceling receipts, and processing refunds.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="icon">
+          <img src="../appoinment/img/4h.png" height="90px" width="90px">
+        </div>
+        <div class="text">
+          <h3>Clinic (OPD & IPD)</h3>
+          <p>The Clinic module allows clinicians and doctors to record clinical
+             data of patients, such as visits, examinations, diagnoses, medical history, treatments, prescriptions, etc. 
+             It also enables them to order investigations, procedures, and medicines, and to keep track of the 
+             treatment and other services provided to the patients.</p>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+
+  
+</section>
+
+<section id="counter">
+  <div class="spacer"></div> <!-- For scroll testing -->
+
+  <div class="container">
+      <h1>HIPAA Cloud Hosted, Trusted, Provider Focused Platform</h1>
+      <div class="stats">
+          <div class="stat">
+              <h2 class="counter" data-target="3000">0</h2>
+              <p>Doctors and growing!</p>
+          </div>
+          <div class="stat">
+              <h2 class="counter" data-target="300">0</h2>
+              <p>Clients (India, Middle East, Africa)</p>
+          </div>
+          <div class="stat">
+              <h2 class="counter" id="coun"data-target="5">0</h2>
+              <p>Appointments/Records Handled Annually</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="spacer"></div> <!-- More space for scrolling -->
+</section>
+
+
+<footer class="footer">
+
+  <div class="footer-container">
+    <!-- Contact Info -->
+    <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:contact@hospital.com">contact@hospital.com</a></p>
+        <p>Phone: <a href="tel:+123456789">+1 234 567 89</a></p>
+        <p>Address: 123 Health St, Medical City, TN</p>
+        <img src="../appoinment/img/logo.png">
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h3>Send a Message</h3>
+        <form id="contact-form">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required><br><br>
+  
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required><br><br>
+  
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea><br><br>
+  
+          <button type="submit">Send Message</button>
+      </form>
+  
+<div id="response"></div>
+
+      
+    </div>
+  </div>
+
+    <div class="social-icons">
+      <!-- Social Media Icons -->
+      <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <p>&copy; 2025 Your Website | All Rights Reserved</p>
+  </footer>
+  
+  <!-- AI ICON BOTTOM RIGHT -->
+  <div class="ai-float" onclick="openChat()">
+   <div class="image-container">
+  <img src="../appoinment/img/ai.png" alt="Chatbot" class="chatbot-img">
+  <div class="speech-bubble">
+    <span class="typewriter">HI!</span>
+  </div>
+</div>
+  </div>
+
+  <!-- CHAT WINDOW -->
+  <div id="chatPopup" class="chat-window hidden">
+    <div class="chat-header">
+      <span>🧠 Hospital AI Assistant</span>
+      <button class="button-one" onclick="closeChat()">✖</button>
+    </div>
+
+    <input type="file" id="fileInput" accept="application/pdf">
+    <div class="log" id="chatLog"></div>
+
+    <div class="controls">
+      <button onclick="startListening()">🎤 Speak</button>
+      <select id="lang">
+        <option value="en-US">English</option>
+        <option value="ta-IN">Tamil</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script src="scriptt.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+
+
+
+<script>
+  $(document).ready(function() {
+    $('#contact-form').on('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        // Get form data
+        var formData = $(this).serialize();
+
+        // Send data via AJAX
+        $.ajax({
+            url: 'submit_message.php',  // PHP file where the data is sent
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                // Display the response (success message or error message)
+                $('#response').html(response);
+
+                // Trigger an alert message upon successful submission
+                alert('Your message has been successfully submitted!');
+                $('#contact-form').trigger("reset");
+            },
+            error: function() {
+                $('#response').html('An error occurred. Please try again.');
+                alert('There was an error while submitting your form. Please try again.');0
+            }
+        });
+    });
+});
+
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+const synth = window.speechSynthesis;
+let pdfText = "";
+
+function openChat() {
+  document.getElementById('chatPopup').classList.remove('hidden');
+}
+function closeChat() {
+  document.getElementById('chatPopup').classList.add('hidden');
+}
+
+function appendMessage(msg, className) {
+  const log = document.getElementById("chatLog");
+  const div = document.createElement("div");
+  div.className = className;
+  div.textContent = msg;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+function speak(text, lang) {
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = lang;
+  synth.speak(utter);
+}
+
+function startListening() {
+  const lang = document.getElementById("lang").value;
+  recognition.lang = lang;
+  recognition.start();
+}
+
+
+recognition.onresult = function(e) {
+  const userQuery = e.results[0][0].transcript;
+  appendMessage("You: " + userQuery, "user");
+  processQuery(userQuery.toLowerCase(), recognition.lang);
+};
+
+function processQuery(query, lang) {
+  let response = "";
+
+  if (query.includes("report") || query.includes("அறிக்கை")) {
+    response = lang === "ta-IN"
+      ? "மருத்துவ அறிக்கை: " + pdfText.substring(0, 300) + "..."
+      : "Medical Report Summary: " + pdfText.substring(0, 300) + "...";
+  } else if (query.includes("hemoglobin") || query.includes("ஹெமோகுளோபின்")) {
+    const match = pdfText.match(/Hemoglobin.*?([\d.]+)\s*g\/dL/i);
+    if (match) {
+      const value = parseFloat(match[1]);
+      const status = (value >= 13 && value <= 17) ? 
+        (lang === "ta-IN" ? "சாதாரணம்" : "Normal") :
+        (lang === "ta-IN" ? "அசாதாரணம்" : "Abnormal");
+      response = lang === "ta-IN"
+        ? `ஹெமோகுளோபின் அளவு ${value} g/dL. இது ${status}.`
+        : `Hemoglobin level is ${value} g/dL. This is ${status}.`;
+    } else {
+      response = lang === "ta-IN"
+        ? "ஹெமோகுளோபின் மதிப்பை அறிக்கையில் காணவில்லை."
+        : "Hemoglobin value not found in the report.";
+    }
+  } else {
+    response = lang === "ta-IN"
+      ? "மன்னிக்கவும், உங்கள் கேள்வியை புரிந்துகொள்ளவில்லை."
+      : "Sorry, I didn't understand the question.";
+  }
+
+  appendMessage("Bot: " + response, "bot");
+  speak(response, lang);
+}
+
+document.getElementById("fileInput").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (!file || file.type !== "application/pdf") {
+    alert("Upload a valid PDF file");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function() {
+
+    const typedarray = new Uint8Array(this.result);
+    pdfjsLib.getDocument({ data: typedarray }).promise.then(async function(pdf) {
+      pdfText = "";
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        const text = content.items.map(item => item.str).join(" ");
+        pdfText += text + "\n";
+        
+      }
+function analyzeReport(lang) {
+  const results = [];
+
+  const patterns = [
+    { label: "Hemoglobin", unit: "g/dL", range: [13, 17] },
+    { label: "Packed Cell Volume", unit: "%", range: [40, 50] },
+    { label: "RBC Count", unit: "mill/mm3", range: [4.5, 5.5] },
+    { label: "MCV", unit: "fL", range: [83, 101] },
+    { label: "MCH", unit: "pg", range: [27, 32] },
+    { label: "MCHC", unit: "g/dL", range: [31.5, 34.5] },
+    { label: "Red Cell Distribution Width", unit: "%", range: [11.6, 14] },
+    { label: "Total Leukocyte Count", unit: "thou/mm3", range: [4, 10] },
+    { label: "Platelet Count", unit: "thou/mm3", range: [150, 410] },
+    { label: "Mean Platelet Volume", unit: "fL", range: [6.5, 12] }
+  ];
+
+  for (const item of patterns) {
+    const regex = new RegExp(`${item.label}.*?([\\d.]+)\\s*${item.unit}`, 'i');
+    const match = pdfText.match(regex);
+    if (match) {
+      const value = parseFloat(match[1]);
+      const status = (value >= item.range[0] && value <= item.range[1]) ? "Normal" : "Abnormal";
+
+      const msgEn = `${item.label} is ${value} ${item.unit}. This is ${status}.`;
+      const msgTa = `${item.label} ${value} ${item.unit}. இது ${status === "Normal" ? "சாதாரணம்" : "சிக்கல் உள்ளது"}.`;
+
+      results.push(lang === "ta-IN" ? msgTa : msgEn);
+    }
+  }
+
+  // Speak all results
+  for (const line of results) {
+    appendMessage("Bot: " + line, "bot");
+    speak(line, lang);
+  }
+}
+
+      appendMessage("✔ PDF scanned successfully. Ask your question now.", "bot");
+      analyzeReport(document.getElementById("lang").value);
+
+    });
+  };
+  reader.readAsArrayBuffer(file);
+});
+</script>
+
+
+</html>
